@@ -1,7 +1,7 @@
 'use strict'
 
 // creating a base name for the mongodb
-const mongooseBaseName = 'remot.ed-backend'
+const mongooseBaseName = 'remot-ed-backend'
 
 // create the mongodb uri for development and test
 const database = {
