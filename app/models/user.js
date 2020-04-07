@@ -10,8 +10,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  role: {
+  type: String,
+  default: 'unenrolled',
+  enum: ["unenrolled", "Student", "Teacher"]
+  },
   token: String
-}, {
+},
+{
   timestamps: true,
   toObject: {
     // remove `hashedPassword` field when we call `.toObject`
