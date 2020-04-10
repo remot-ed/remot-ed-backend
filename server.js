@@ -8,6 +8,8 @@ const exampleRoutes = require('./app/routes/example_routes')
 const userRoutes = require('./app/routes/user_routes')
 const uploadRoutes = require('./app/routes/upload_routes')
 const classroomRoutes = require('./app/routes/classroom_routes')
+const questionRoutes = require('./app/routes/question_routes')
+const responseRoutes = require('./app/routes/response_routes')
 const quizRoutes = require('./app/routes/quiz_routes')
 
 // require middleware
@@ -68,6 +70,8 @@ app.use(exampleRoutes)
 app.use(userRoutes)
 app.use(uploadRoutes)
 app.use(classroomRoutes)
+app.use(questionRoutes)
+app.use(responseRoutes)
 app.use(quizRoutes)
 
 // register error handling middleware
