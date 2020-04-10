@@ -55,13 +55,13 @@ router.get('/classrooms/:id', requireToken, (req, res, next) => {
 })
 
 // CREATE
-// POST /examples
+// POST /questions
 router.post('/classrooms', requireToken, (req, res, next) => {
-  // set owner of new example to be current user
+  // set owner of new question to be current user
   req.body.classroom.owner = req.user.id
 
   Classroom.create(req.body.classroom)
-    // respond to succesful `create` with status 201 and JSON of new "example"
+    // respond to succesful `create` with status 201 and JSON of new "question"
     .then(classroom => {
       res.status(201).json({ classroom: classroom.toObject() })
     })

@@ -31,4 +31,4 @@ const quizSchema = new mongoose.Schema({
   timestamps: true
 })
 
-module.exports = mongoose.model('Classroom', classroomSchema)
+module.exports = mongoose.model('Quiz', quizSchema)

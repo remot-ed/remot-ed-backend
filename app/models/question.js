@@ -15,7 +15,7 @@ const questionSchema = new mongoose.Schema({
     ref: 'Quiz',
     required: true
   },
-  correctAnswer: {
+  C_Answer: {
     type: String,
     required: true
   },
