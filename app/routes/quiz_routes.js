@@ -13,7 +13,7 @@ const router = express.Router()
 
 // INDEX
 // GET /examples
-router.get('/quiz', requireToken, (req, res, next) => {
+router.get('/quizzes', requireToken, (req, res, next) => {
   Quiz.find()
     .then(quizzes => {
       // `examples` will be an array of Mongoose documents
