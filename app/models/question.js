@@ -15,19 +15,19 @@ const questionSchema = new mongoose.Schema({
     ref: 'Quiz',
     required: true
   },
-  C_Answer: {
+  correctAnswer: {
     type: String,
     required: true
   },
-  answer2: {
+  answerTwo: {
     type: String,
     required: true
   },
-  answer3: {
+  answerThree: {
     type: String,
     required: true
   },
-  answer4: {
+  answerFour: {
     type: String,
     required: true
   }
