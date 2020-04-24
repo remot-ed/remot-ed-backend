@@ -14,6 +14,10 @@ const quizSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Classroom'
   }],
+  numOfQuestions: {
+    type: Number,
+    required: true
+  },
   isActive: {
     type: Boolean,
     required: true
