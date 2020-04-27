@@ -4,18 +4,13 @@ const ac = new AccessControl();
 
 exports.roles = (function() {
   // .grant gives roles
-ac.grant("student")
- .readOwn("classroom")
- .readAny("quiz")
- .createOwn("results")
- .updateOwn("profile")
+ac.grant("unenrolled")
 
 // .extend inherit grants from .extend('this users permisions')
-ac.grant("supervisor")
- .extend("basic")
- .readAny("profile")
+ac.grant("student")
+ .readAny("a")
 
-ac.grant("admin")
+ac.grant("teacher")
  .extend("student")
  .extend("supervisor")
  .updateAny("profile")

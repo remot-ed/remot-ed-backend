@@ -29,11 +29,14 @@ const router = express.Router()
 // INDEX
 // GET /examples
 router.get('/classrooms', requireToken, (req, res, next) => {
-  Classroom.find()
+  Classroom.find({ owner: req.user.id })
+
+  // need to figure out how to call students in an array, ( $in ?)
+  // Classroom.find({ students: req.user.id })
+  // once find student works, can combine using the $or
+  // Classroom.find({ $or: [ { owner: req.user.id }, { student: req.user.id } ] })
+
     .then(classrooms => {
-      // `examples` will be an array of Mongoose documents
-      // we want to convert each one to a POJO, so we use `.map` to
-      // apply `.toObject` to each one
       return classrooms.map(classroom => classroom.toObject())
     })
     // respond with status 200 and JSON of the examples
