@@ -29,13 +29,8 @@ const router = express.Router()
 // INDEX
 // GET /examples
 router.get('/classrooms', requireToken, (req, res, next) => {
-  Classroom.find({ owner: req.user.id })
-
-  // need to figure out how to call students in an array, ( $in ?)
-  // Classroom.find({ students: req.user.id })
-  // once find student works, can combine using the $or
-  // Classroom.find({ $or: [ { owner: req.user.id }, { student: req.user.id } ] })
-
+  // find class where req.user._id is equal to owner or in students array
+  Classroom.find({$or: [{owner: req.user.id}, {students: req.user._id}]})
     .then(classrooms => {
       return classrooms.map(classroom => classroom.toObject())
     })
