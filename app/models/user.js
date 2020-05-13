@@ -10,6 +10,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  classroom: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Classroom'
+  }],
   role: {
     type: String,
     default: 'unenrolled',
