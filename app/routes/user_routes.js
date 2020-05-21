@@ -138,4 +138,15 @@ router.delete('/sign-out', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+// get a users ID by email (or name?)
+router.get('/userId', requireToken, (req, res, next) => {
+  User.find({ email: req.user.email })
+
+    .then(quizzes => res.status(200).json({ user: user._id }))
+    // if an error occurs, pass it to the handler
+    .catch(next)
+
+  console.log(res, next)
+})
+
 module.exports = router
