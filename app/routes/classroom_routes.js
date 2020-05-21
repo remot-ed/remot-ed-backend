@@ -52,6 +52,22 @@ router.get('/classrooms/:id', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+// SHOW
+// GET /questions/5a7db6c74d55bc51bdf39793
+router.get('/myclassrooms/:id', requireToken, (req, res, next) => {
+  // req.params.id will be set based on the `:id` in the route
+  const userId = req.user._id
+  Classroom.find({ owner: userId })
+    .then(classroom => {
+      return classroom.map(classroom => classroom.toObject())
+    })
+    .then(handle404)
+    .then(classrooms => res.status(200).json({ classrooms: classrooms }))
+
+    // if an error occurs, pass it to the handler
+    .catch(next)
+})
+
 // CREATE
 // POST /questions
 router.post('/classrooms', requireToken, (req, res, next) => {
