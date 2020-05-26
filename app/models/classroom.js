@@ -15,8 +15,8 @@ const classroomSchema = new mongoose.Schema({
     required: true
   },
   students: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Student'
+    type: mongoose.Schema.Types.Mixed
+    // ref: 'Student'
   }],
   quizzes: [{
     type: mongoose.Schema.Types.ObjectId,
