@@ -30,6 +30,10 @@ const questionSchema = new mongoose.Schema({
   answerFour: {
     type: String,
     required: true
+  },
+  questionNumber: {
+    type: Number,
+    required: true
   }
 }, {
   timestamps: true
