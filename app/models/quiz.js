@@ -19,12 +19,10 @@ const quizSchema = new mongoose.Schema({
     required: true
   },
   isActive: {
-    type: Boolean,
-    required: true
+    type: Boolean
   },
   startTime: {
-    type: Date,
-    required: true
+    type: Date
   },
   questions: [{
     type: mongoose.Schema.Types.Mixed,
