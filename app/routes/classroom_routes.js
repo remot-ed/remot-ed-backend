@@ -27,7 +27,7 @@ const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
 
 // INDEX
-// GET /examples
+// GET /classrooms
 router.get('/classrooms', requireToken, (req, res, next) => {
   // find class where req.user._id is equal to owner or in students array
   Classroom.find({$or: [{owner: req.user.id}, {students: req.user._id}]})
