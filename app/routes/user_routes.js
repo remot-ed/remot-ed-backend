@@ -141,9 +141,8 @@ router.delete('/sign-out', requireToken, (req, res, next) => {
 // GET /userId
 router.get('/userId', requireToken, (req, res, next) => {
   // find class where req.user._id is equal to owner or in students array
-  console.log('the stringified is' + JSON.stringify(req.body))
-  console.log('the unstringified req is' + (req.body))
-  User.findOne({ email: `${req.body}` })
+  console.log('the req is ', req.query.user.email)
+  User.find({ email: `${req.query.user.email}` })
     .then(user => {
       return user.map(user => user.toObject())
     })
