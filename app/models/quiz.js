@@ -25,7 +25,7 @@ const quizSchema = new mongoose.Schema({
     type: Date
   },
   questions: [{
-    type: mongoose.Schema.Types.Mixed,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Question'
   }]
 }, {

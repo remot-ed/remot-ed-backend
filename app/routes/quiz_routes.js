@@ -15,6 +15,7 @@ const router = express.Router()
 // GET /examples
 router.get('/quizzes', requireToken, (req, res, next) => {
   Quiz.find({ owner: req.user.id })
+    .populate('questions')
   // this needs to be reconfigured to find quizes belonging to classes students are in
   // Quiz.find({$or: [{owner: req.user.id}, {'classroom.student': req.user._id}]})
     .then(quizzes => {
@@ -34,6 +35,7 @@ router.get('/quizzes', requireToken, (req, res, next) => {
 router.get('/quizzes/:id', requireToken, (req, res, next) => {
   // req.params.id will be set based on the `:id` in the route
   Quiz.findById(req.params.id)
+    .populate('questions')
     .then(handle404)
     // if `findById` is succesful, respond with 200 and "example" JSON
     .then(quiz => res.status(200).json({ quiz: quiz.toObject() }))
