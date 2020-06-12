@@ -75,6 +75,7 @@ router.post('/classrooms', requireToken, (req, res, next) => {
   req.body.classroom.owner = req.user.id
 
   Classroom.create(req.body.classroom)
+    .populate('students')
     // respond to succesful `create` with status 201 and JSON of new "question"
     .then(classroom => {
       res.status(201).json({ classroom: classroom.toObject() })
