@@ -144,10 +144,10 @@ router.get('/userId', requireToken, (req, res, next) => {
   console.log('the req is ', req.query.user.email)
   User.find({ email: `${req.query.user.email}` })
     .then(user => {
-      return user.map(user => user.toObject())
+      return (user.map(user => user.toObject()))
     })
     // respond with status 200 and JSON of the examples
-    .then(user => res.status(200).json({ user: user }))
+    .then(user => { res.status(200).json({ user: user }) })
     // if an error occurs, pass it to the handler
     .catch(next)
 })
