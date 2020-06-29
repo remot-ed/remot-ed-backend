@@ -141,15 +141,17 @@ router.delete('/sign-out', requireToken, (req, res, next) => {
 // GET /userId
 router.get('/userId', requireToken, (req, res, next) => {
   // find class where req.user._id is equal to owner or in students array
-  console.log('the req is ', req.query.user.email)
-  User.find({ email: `${req.query.user.email}` })
-    .then(user => {
-      return (user.map(user => user.toObject()))
-    })
-    // respond with status 200 and JSON of the examples
-    .then(user => { res.status(200).json({ user: user }) })
+  const mydoc = User.findOne({ email: `${req.query.user.email}` }, { _id: 1 })
+  // .then(user => {
+  //   return (user.map(user => user._id))
+  // })
+  if (mydoc) {
+    const myid = mydoc._id
+    console.log(myid)
+      .then(user => { res.status(200).json({ user: user.toObject() }) })
     // if an error occurs, pass it to the handler
-    .catch(next)
+      .catch(next)
+  }
 })
 
 module.exports = router
