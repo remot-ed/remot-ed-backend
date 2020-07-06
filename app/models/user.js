@@ -14,6 +14,10 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Classroom'
   }],
+  results: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Result'
+  }],
   role: {
     type: String,
     default: 'unenrolled',
