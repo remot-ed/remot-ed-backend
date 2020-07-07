@@ -154,4 +154,7 @@ router.get('/userId', requireToken, (req, res, next) => {
   }
 })
 
+// NOTE: need to create user route, to get user (student) by email, and populate
+// results
+
 module.exports = router
