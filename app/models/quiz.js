@@ -27,6 +27,10 @@ const quizSchema = new mongoose.Schema({
   questions: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Question'
+  }],
+  results: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Result'
   }]
 }, {
   timestamps: true
