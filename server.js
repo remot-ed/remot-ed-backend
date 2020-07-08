@@ -11,6 +11,7 @@ const classroomRoutes = require('./app/routes/classroom_routes')
 const questionRoutes = require('./app/routes/question_routes')
 const responseRoutes = require('./app/routes/response_routes')
 const quizRoutes = require('./app/routes/quiz_routes')
+const resultRoutes = require('./app/routes/result_routes')
 
 // require middleware
 const errorHandler = require('./lib/error_handler')
@@ -73,6 +74,7 @@ app.use(classroomRoutes)
 app.use(questionRoutes)
 app.use(responseRoutes)
 app.use(quizRoutes)
+app.use(resultRoutes)
 
 // register error handling middleware
 // note that this comes after the route middlewares, because it needs to be
