@@ -31,9 +31,10 @@ const router = express.Router()
 router.get('/classrooms', requireToken, (req, res, next) => {
   console.log('whats student id?' + req.user._id)
   // find class where req.user._id is equal to owner or in students array (pause until populate is resolved)
-  Classroom.find({$or: [{owner: req.user.id}, { students: req.user._id }]})
-  // Classroom.find({owner: req.user.id})
-    // .populate('students')
+  // Classroom.find({$or: [{owner: req.user.id}, {students: req.user._id}]})
+  Classroom.find({owner: req.user.id})
+    .populate('students')
+    .populate('quizzes')
     .then(classrooms => {
       return classrooms.map(classroom => classroom.toObject())
     })
@@ -49,6 +50,7 @@ router.get('/classrooms/:id', requireToken, (req, res, next) => {
   // req.params.id will be set based on the `:id` in the route
   Classroom.findById(req.params.id)
     .populate('students')
+    .populate('quizzes')
     // .populate('students')
     .then(handle404)
     // if `findById` is succesful, respond with 200 and "example" JSON
