@@ -33,6 +33,7 @@ router.get('/classrooms', requireToken, (req, res, next) => {
   // Classroom.find({$or: [{owner: req.user.id}, {students: req.user._id}]})
   Classroom.find({owner: req.user.id})
     .populate('students')
+    .populate('quizzes')
     .then(classrooms => {
       return classrooms.map(classroom => classroom.toObject())
     })
@@ -48,6 +49,7 @@ router.get('/classrooms/:id', requireToken, (req, res, next) => {
   // req.params.id will be set based on the `:id` in the route
   Classroom.findById(req.params.id)
     .populate('students')
+    .populate('quizzes')
     // .populate('students')
     .then(handle404)
     // if `findById` is succesful, respond with 200 and "example" JSON
