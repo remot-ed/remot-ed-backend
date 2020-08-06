@@ -29,10 +29,11 @@ const router = express.Router()
 // INDEX
 // GET /classrooms
 router.get('/classrooms', requireToken, (req, res, next) => {
+  console.log('whats student id?' + req.user._id)
   // find class where req.user._id is equal to owner or in students array (pause until populate is resolved)
-  // Classroom.find({$or: [{owner: req.user.id}, {students: req.user._id}]})
-  Classroom.find({owner: req.user.id})
-    .populate('students')
+  Classroom.find({$or: [{owner: req.user.id}, { students: req.user._id }]})
+  // Classroom.find({owner: req.user.id})
+    // .populate('students')
     .then(classrooms => {
       return classrooms.map(classroom => classroom.toObject())
     })
