@@ -10,11 +10,11 @@ const responseSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
-  questionOwner: {
+  questionOwner: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Question',
     required: true
-  },
+  }],
   quizOwner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Quiz',
