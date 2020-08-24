@@ -14,9 +14,9 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Classroom'
   }],
-  results: [{
+  response: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Result'
+    ref: 'Response'
   }],
   role: {
     type: String,
