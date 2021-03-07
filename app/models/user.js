@@ -2,12 +2,10 @@ const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
   firstName: {
-    type: String,
-    required: false
+    type: String
   },
   lastName: {
-    type: String,
-    required: false
+    type: String
   },
   email: {
     type: String,
@@ -28,8 +26,11 @@ const userSchema = new mongoose.Schema({
   }],
   role: {
     type: String,
-    default: 'unenrolled',
-    enum: ['unenrolled', 'Student', 'Teacher']
+    default: 'student',
+    enum: ['student', 'teacher', 'admin']
+  },
+  accessToken: {
+    type: String
   },
   token: String
 },
