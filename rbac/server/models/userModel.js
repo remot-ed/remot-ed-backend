@@ -12,12 +12,10 @@ const UserSchema = new Schema({
   type: String,
   required: true
  },
- // our roles should have unenrolled, student, teacher (unenrolled default)
- // student after assigned to class will be similar to basic
  role: {
   type: String,
-  default: 'basic',
-  enum: ["basic", "supervisor", "admin"]
+  default: 'teacher',
+  enum: ["student", "teacher", "admin"]
  },
  // accessToken will id users across ap
  accessToken: {
