@@ -4,7 +4,7 @@ const ac = new AccessControl();
 
 exports.roles = (function() {
   // .grant gives roles
-ac.grant("unenrolled")
+ac.grant("student")
 
 // .extend inherit grants from .extend('this users permisions')
 ac.grant("student")
